@@ -46,7 +46,7 @@ add_library(led STATIC
 
 # Installation
 install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/crt.o
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/crt.o ${SOURCE_SRC_DIR}/lpc2378_flash.ld ${SOURCE_SRC_DIR}/lpc2378_ram.ld
     DESTINATION ${CMAKE_BINARY_DIR}/install/src
 )
 install(
