@@ -9,6 +9,7 @@ set(SOURCE_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(BINARY_SRC_DIR ${CMAKE_CURRENT_BINARY_DIR}/src)
 
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostartfiles --specs=nosys.specs")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T${SOURCE_SRC_DIR}/lpc2378_flash.ld")
 set(COMPILE_C TRUE)

@@ -231,7 +231,7 @@ pucrsdevboard__error_t gpio__configure(gpio_exp_pin_t pin, gpio_exp_pin_directio
         ret = PUCRSDEVBOARD__SHARED_RESOURCE_WARNING;
     }
 
-    // Configure pin to 00 (1 nible), that is, GPIO
+    // Configure pin to 00 (1 nibble), that is, GPIO
     uint8_t pinsel_offset = _global_gpio_description[pin].pinsel_offset;
     *(_global_gpio_description[pin].pinsel) &= ~(1 << pinsel_offset);
     *(_global_gpio_description[pin].pinsel) &= ~(1 << (pinsel_offset + 1));
@@ -267,7 +267,7 @@ pucrsdevboard__error_t gpio__get(gpio_exp_pin_t pin, bool *value)
     uint8_t pinsel_offset = _global_gpio_description[pin].pinsel_offset;
     bool bit0 = !!(*(_global_gpio_description[pin].pinsel) & (1 << pinsel_offset));
     bool bit1 = !!(*(_global_gpio_description[pin].pinsel) & (1 << (pinsel_offset + 1)));
-    if (!bit0 && !bit1) {
+    if (bit0 || bit1) {
         return PUCRSDEVBOARD__NOT_INITIALIZED_ERR;
     }
 

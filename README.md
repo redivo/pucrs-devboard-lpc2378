@@ -5,11 +5,8 @@ Here you can found C libraries and documentation about the board.
 
 ## Environment
 
-For this project you have to install the following packages:
- - lpc21isp
- - gcc-arm-none-eabi
-
-You can have these packets using apt-get.
+For this project you have to use Docker. If you don't have Docker installed in your machine,
+please install it by following the steps described in https://docs.docker.com/engine/install/
 
 ## DevBoard info
 
@@ -45,10 +42,15 @@ So it is up to the final user to link all required libraries.
 To help final user the information about direct dependencies is listed at header file documentation.
 
 ### Compiling This Project
-This project uses CMakeLists.
-If you are not familiar to CMakeList you can just run ```./build-project``` from the root repository
-path and that script is gonna create the ```_build``` direcotry and prepare all stuff to
-compilation.
+This project uses Docker and CMakeLists. To compile the project just follow these steps:
+ - Download docker image by running ```docker pull redivo/multicompdebian:0.1```
+ - Start docker and enter on it by running
+```docker run -v `pwd`:/mnt/pucrs-devboard-lpc2378 -it redivo/multicompdebian:0.1``` from the root path
+of the current repository
+ - Inside the docker, enter in repository by running ```cd /mnt/pucrs-devboard-lpc2378```
+ - Now you can compile it using CMakeLists. If you are not familiar to CMakeList you can just run
+```./build-project``` from the root repository path and that script is gonna create the ```_build```
+direcotry and prepare all stuff to compilation.
 Once you have your build directory ready you can run ```make``` to build or ```make install``` to
 build and generate the directory ```<build path>/install/``` with all relevant artifacts.
 
